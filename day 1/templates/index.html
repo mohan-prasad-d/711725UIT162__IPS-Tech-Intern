@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="ta-IN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>திருக்குறள் | Thirukkural — Ancient Tamil Wisdom</title>
+    <meta name="description" content="Explore all 1330 Thirukkural verses with Tamil meanings. The timeless wisdom of Thiruvalluvar at your fingertips.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #080c14;
+            --bg-secondary: #0d1421;
+            --bg-card: #111827;
+            --bg-card-hover: #141f30;
+            --border: rgba(255,255,255,0.07);
+            --border-glow: rgba(251,191,36,0.4);
+            --gold: #f59e0b;
+            --gold-light: #fcd34d;
+            --gold-dark: #d97706;
+            --crimson: #ef4444;
+            --teal: #14b8a6;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #475569;
+            --shadow-gold: 0 0 40px rgba(245,158,11,0.15);
+            --shadow-card: 0 4px 32px rgba(0,0,0,0.5);
+            --radius-card: 20px;
+            --radius-btn: 12px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ─── Starfield Background ─── */
+        .stars {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            border-radius: 50%;
+            background: white;
+            animation: twinkle var(--dur, 3s) ease-in-out infinite var(--delay, 0s);
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.3); }
+        }
+
+        /* ─── Ambient Orbs ─── */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none;
+            z-index: 0;
+            animation: floatOrb 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(245,158,11,0.12) 0%, transparent 70%);
+            top: -200px;
+            left: -150px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(20,184,166,0.1) 0%, transparent 70%);
+            bottom: -100px;
+            right: -100px;
+            animation-delay: -10s;
+        }
+
+        .orb-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(239,68,68,0.08) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -5s;
+        }
+
+        @keyframes floatOrb {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(30px, -30px); }
+            66% { transform: translate(-20px, 20px); }
+        }
+
+        /* ─── Page Wrapper ─── */
+        .page {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ─── Header ─── */
+        .header {
+            text-align: center;
+            padding: 64px 20px 48px;
+        }
+
+        .header-top-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(245,158,11,0.1);
+            border: 1px solid rgba(245,158,11,0.3);
+            border-radius: 100px;
+            padding: 6px 16px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .header-top-label::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gold);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.7); }
+        }
+
+        .header h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+
+        .title-tamil {
+            display: block;
+            font-family: 'Noto Sans Tamil', sans-serif;
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title-english {
+            display: block;
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            font-weight: 400;
+            color: var(--text-secondary);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        .header-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            max-width: 420px;
+            margin: 16px auto 0;
+            line-height: 1.7;
+        }
+
+        /* ─── Divider ─── */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            max-width: 200px;
+            margin: 28px auto;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
+        }
+
+        .divider-icon {
+            font-size: 1.1rem;
+        }
+
+        /* ─── Main Content ─── */
+        .main {
+            flex: 1;
+            max-width: 760px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        /* ─── Search Card ─── */
+        .search-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-card);
+            padding: 36px;
+            box-shadow: var(--shadow-card);
+            transition: border-color var(--transition), box-shadow var(--transition);
+        }
+
+        .search-card:focus-within {
+            border-color: rgba(245,158,11,0.3);
+            box-shadow: var(--shadow-card), var(--shadow-gold);
+        }
+
+        .search-label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        .search-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .input-wrapper {
+            position: relative;
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.1rem;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 16px 16px 16px 46px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-btn);
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            outline: none;
+            transition: all var(--transition);
+            -moz-appearance: textfield;
+        }
+
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+
+        input[type="number"]::placeholder {
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        input[type="number"]:focus {
+            background: rgba(245,158,11,0.05);
+            border-color: rgba(245,158,11,0.5);
+            box-shadow: 0 0 0 4px rgba(245,158,11,0.08);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 24px;
+            border: none;
+            border-radius: var(--radius-btn);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: #0a0a0a;
+            box-shadow: 0 4px 20px rgba(245,158,11,0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(245,158,11,0.4);
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.05);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            color: var(--text-primary);
+            border-color: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .btn-icon {
+            font-size: 1rem;
+            line-height: 1;
+        }
+
+        .hint-text {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-top: 16px;
+        }
+
+        /* ─── Result Area ─── */
+        .result-area {
+            margin-top: 24px;
+            overflow: hidden;
+        }
+
+        /* ─── Loading ─── */
+        .loading-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-card);
+            padding: 60px;
+            text-align: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .loader {
+            position: relative;
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 20px;
+        }
+
+        .loader-ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            animation: spinRing 1.2s linear infinite;
+        }
+
+        .loader-ring:nth-child(1) {
+            border-top-color: var(--gold);
+            animation-delay: 0s;
+        }
+
+        .loader-ring:nth-child(2) {
+            border-right-color: var(--gold-dark);
+            inset: 6px;
+            animation-delay: 0.15s;
+            animation-direction: reverse;
+        }
+
+        @keyframes spinRing {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .loading-sub {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-top: 6px;
+        }
+
+        /* ─── Kural Result Card ─── */
+        .kural-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            animation: fadeIn 0.5s ease;
+            box-shadow: var(--shadow-card);
+        }
+
+        .kural-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 28px;
+            background: linear-gradient(135deg, rgba(245,158,11,0.08), rgba(20,184,166,0.05));
+            border-bottom: 1px solid var(--border);
+        }
+
+        .kural-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #0a0a0a;
+        }
+
+        .badge-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .badge-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        .badge-number {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--gold);
+            line-height: 1.2;
+        }
+
+        .kural-share-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 14px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            transition: all var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .kural-share-btn:hover {
+            background: rgba(255,255,255,0.1);
+            color: var(--text-primary);
+        }
+
+        .kural-card-body {
+            padding: 32px 28px;
+        }
+
+        /* ─── Verse Section ─── */
+        .verse-wrapper {
+            background: linear-gradient(135deg, rgba(245,158,11,0.05), rgba(20,184,166,0.03));
+            border: 1px solid rgba(245,158,11,0.15);
+            border-radius: 14px;
+            padding: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .verse-wrapper::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 16px;
+            font-size: 8rem;
+            color: var(--gold);
+            opacity: 0.06;
+            font-family: Georgia, serif;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .verse-section-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .kural-verse {
+            font-family: 'Noto Sans Tamil', sans-serif;
+            font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 2;
+            text-align: center;
+        }
+
+        .kural-verse p {
+            padding: 10px 0;
+            position: relative;
+        }
+
+        .kural-verse p:first-child {
+            border-bottom: 1px dashed rgba(245,158,11,0.2);
+            padding-bottom: 14px;
+            margin-bottom: 4px;
+        }
+
+        /* ─── Meaning Section ─── */
+        .meaning-wrapper {
+            margin-top: 24px;
+        }
+
+        .meaning-block {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px;
+        }
+
+        .meaning-block-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--teal);
+            margin-bottom: 14px;
+        }
+
+        .meaning-block-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--teal), transparent);
+            opacity: 0.3;
+        }
+
+        .meaning-text {
+            color: #cbd5e1;
+            font-size: 0.97rem;
+            line-height: 1.85;
+            font-weight: 400;
+        }
+
+        /* ─── Error ─── */
+        .error-card {
+            background: rgba(239,68,68,0.07);
+            border: 1px solid rgba(239,68,68,0.25);
+            border-radius: var(--radius-card);
+            padding: 28px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            animation: fadeIn 0.3s ease, shake 0.4s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-8px); }
+            40% { transform: translateX(8px); }
+            60% { transform: translateX(-5px); }
+            80% { transform: translateX(5px); }
+        }
+
+        .error-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(239,68,68,0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .error-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #fca5a5;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .error-msg {
+            color: #f87171;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* ─── Stats Bar ─── */
+        .stats-bar {
+            display: flex;
+            gap: 1px;
+            margin-top: 24px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--border);
+        }
+
+        .stat-item {
+            flex: 1;
+            background: var(--bg-card);
+            padding: 18px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+            font-weight: 600;
+        }
+
+        /* ─── Footer ─── */
+        .footer {
+            text-align: center;
+            padding: 32px 20px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer span {
+            color: var(--gold);
+        }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 600px) {
+            .header {
+                padding: 44px 20px 36px;
+            }
+
+            .search-card {
+                padding: 24px 20px;
+            }
+
+            .search-row {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .kural-card-header {
+                padding: 16px 20px;
+            }
+
+            .kural-card-body {
+                padding: 24px 20px;
+            }
+
+            .verse-wrapper {
+                padding: 20px;
+            }
+
+            .stats-bar {
+                flex-direction: column;
+                gap: 1px;
+            }
+        }
+
+        /* ─── Transition Utility ─── */
+        .fade-slide {
+            animation: fadeIn 0.5s ease forwards;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Stars -->
+    <div class="stars" id="starsContainer"></div>
+
+    <!-- Ambient orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="page">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header-top-label">திருவள்ளுவர் — Thiruvalluvar</div>
+            <h1>
+                <span class="title-tamil">திருக்குறள்</span>
+                <span class="title-english">Thirukkural</span>
+            </h1>
+            <div class="divider">
+                <span class="divider-icon">🪔</span>
+            </div>
+            <p class="header-desc">
+                Ancient Tamil wisdom encoded in 1330 couplets — spanning virtue, wealth &amp; love.
+            </p>
+        </header>
+
+        <!-- Main -->
+        <main class="main">
+
+            <!-- Stats -->
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-value">1330</div>
+                    <div class="stat-label">Kurals</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">133</div>
+                    <div class="stat-label">Chapters</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">Books</div>
+                </div>
+            </div>
+
+            <!-- Search Card -->
+            <div class="search-card" style="margin-top: 24px;">
+                <label class="search-label" for="kuralInput">Find a Kural</label>
+                <div class="search-row">
+                    <div class="input-wrapper">
+                        <span class="input-icon">📜</span>
+                        <input
+                            type="number"
+                            id="kuralInput"
+                            placeholder="Enter number (1 – 1330)"
+                            min="1"
+                            max="1330"
+                            aria-label="Enter Kural number between 1 and 1330"
+                        />
+                    </div>
+                    <button class="btn btn-primary" id="searchBtn" onclick="searchKural()">
+                        <span class="btn-icon">🔍</span> Search
+                    </button>
+                    <button class="btn btn-secondary" id="randomBtn" onclick="getRandomKural()">
+                        <span class="btn-icon">🎲</span> Random
+                    </button>
+                </div>
+                <div class="hint-text">Press <kbd style="background:rgba(255,255,255,0.06);padding:2px 7px;border-radius:5px;font-family:monospace;font-size:0.8rem;border:1px solid rgba(255,255,255,0.1);">Enter</kbd> to search or try a random verse</div>
+            </div>
+
+            <!-- Result Area -->
+            <div class="result-area" id="resultArea"></div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            Built with <span>♥</span> for Tamil culture &nbsp;·&nbsp; Powered by <span>Thirukkural API</span>
+        </footer>
+    </div>
+
+    <script>
+        // ─── Stars ───────────────────────────────────
+        (function createStars() {
+            const container = document.getElementById('starsContainer');
+            const count = 120;
+            for (let i = 0; i < count; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const size = Math.random() * 2.5 + 0.5;
+                star.style.cssText = `
+                    width: ${size}px;
+                    height: ${size}px;
+                    top: ${Math.random() * 100}%;
+                    left: ${Math.random() * 100}%;
+                    --dur: ${Math.random() * 4 + 2}s;
+                    --delay: ${-Math.random() * 4}s;
+                `;
+                container.appendChild(star);
+            }
+        })();
+
+        // ─── Elements ─────────────────────────────────
+        const kuralInput = document.getElementById('kuralInput');
+        const searchBtn  = document.getElementById('searchBtn');
+        const randomBtn  = document.getElementById('randomBtn');
+        const resultArea = document.getElementById('resultArea');
+
+        // ─── Enter key ────────────────────────────────
+        kuralInput.addEventListener('keydown', e => {
+            if (e.key === 'Enter') searchKural();
+        });
+
+        // ─── Search ───────────────────────────────────
+        async function searchKural() {
+            const val = kuralInput.value.trim();
+            if (!val) { showError('Please enter a Kural number.'); return; }
+
+            const num = parseInt(val);
+            if (isNaN(num) || num < 1 || num > 1330) {
+                showError('Please enter a valid number between 1 and 1330.');
+                return;
+            }
+
+            setLoading(true);
+            try {
+                const res  = await fetch(`/api/kural/${num}`);
+                const data = await res.json();
+                if (res.ok) renderKural(data);
+                else showError(data.error || 'Failed to fetch Kural. Please try again.');
+            } catch (e) {
+                showError('Network error. Please check your connection.');
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        // ─── Random ───────────────────────────────────
+        async function getRandomKural() {
+            setLoading(true);
+            kuralInput.value = '';
+            try {
+                const res  = await fetch('/api/random');
+                const data = await res.json();
+                if (res.ok) {
+                    renderKural(data);
+                    kuralInput.value = data.number;
+                } else {
+                    showError(data.error || 'Failed to fetch random Kural.');
+                }
+            } catch (e) {
+                showError('Network error. Please check your connection.');
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        // ─── Set Loading ──────────────────────────────
+        function setLoading(state) {
+            searchBtn.disabled = state;
+            randomBtn.disabled = state;
+            if (state) {
+                resultArea.innerHTML = `
+                    <div class="loading-card">
+                        <div class="loader">
+                            <div class="loader-ring"></div>
+                            <div class="loader-ring"></div>
+                        </div>
+                        <div class="loading-text">Seeking ancient wisdom…</div>
+                        <div class="loading-sub">Connecting to the timeless verses</div>
+                    </div>
+                `;
+            }
+        }
+
+        // ─── Render Kural ─────────────────────────────
+        function renderKural(data) {
+            const line1          = esc(data.line1          || '');
+            const line2          = esc(data.line2          || '');
+            const tamilMeaning   = esc(data.tamil_meaning  || '');
+            const englishMeaning = esc(data.english_meaning || '');
+            const chapter        = esc(data.chapter        || '');
+            const section        = esc(data.section        || '');
+
+            resultArea.innerHTML = `
+                <div class="kural-card">
+                    <div class="kural-card-header">
+                        <div class="kural-badge">
+                            <div class="badge-icon">📜</div>
+                            <div class="badge-text">
+                                <span class="badge-label">${section || 'Kural'}</span>
+                                <span class="badge-number">#${data.number}</span>
+                            </div>
+                        </div>
+                        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+                            ${chapter ? `<span style="font-size:0.75rem;color:var(--gold);opacity:0.8;font-weight:600">📖 ${chapter}</span>` : ''}
+                            <button class="kural-share-btn" onclick="copyKural(${data.number})" id="shareBtn">
+                                📋 Copy
+                            </button>
+                        </div>
+                    </div>
+                    <div class="kural-card-body">
+                        <div class="verse-wrapper">
+                            <div class="verse-section-label">✦ Verse — குறள்</div>
+                            <div class="kural-verse">
+                                ${line2
+                                    ? `<p>${line1}</p><p>${line2}</p>`
+                                    : `<p>${line1}</p>`
+                                }
+                            </div>
+                        </div>
+
+                        <div class="meaning-wrapper">
+                            ${tamilMeaning ? `
+                            <div class="meaning-block">
+                                <div class="meaning-block-label">💡 Tamil Meaning — பொருள்</div>
+                                <div class="meaning-text">${tamilMeaning}</div>
+                            </div>
+                            ` : ''}
+                            ${englishMeaning ? `
+                            <div class="meaning-block" style="margin-top:12px">
+                                <div class="meaning-block-label" style="color:#60a5fa">🌐 English Meaning</div>
+                                <div class="meaning-text" style="color:#bfdbfe">${englishMeaning}</div>
+                            </div>
+                            ` : ''}
+                            ${!tamilMeaning && !englishMeaning ? `
+                            <div class="meaning-block">
+                                <div class="meaning-block-label">💡 Meaning — பொருள்</div>
+                                <div class="meaning-text" style="color:var(--text-muted);font-style:italic;">No meaning available for this Kural.</div>
+                            </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ─── Show Error ───────────────────────────────
+        function showError(msg) {
+            resultArea.innerHTML = `
+                <div class="error-card">
+                    <div class="error-icon">⚠️</div>
+                    <div>
+                        <div class="error-title">Something went wrong</div>
+                        <div class="error-msg">${esc(msg)}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ─── Copy to Clipboard ────────────────────────
+        async function copyKural(num) {
+            const btn = document.getElementById('shareBtn');
+            try {
+                const res  = await fetch(`/api/kural/${num}`);
+                const data = await res.json();
+                const verse = [data.line1, data.line2].filter(Boolean).join('\n');
+                const text = `Thirukkural #${data.number}\n\n${verse}\n\nTamil: ${data.tamil_meaning || ''}\nEnglish: ${data.english_meaning || ''}`;
+                await navigator.clipboard.writeText(text);
+                btn.textContent = '✅ Copied!';
+                setTimeout(() => { btn.innerHTML = '📋 Copy'; }, 2000);
+            } catch (_) {
+                btn.textContent = '❌ Failed';
+                setTimeout(() => { btn.innerHTML = '📋 Copy'; }, 2000);
+            }
+        }
+
+        // ─── Escape HTML ──────────────────────────────
+        function esc(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        // ─── Auto-focus ───────────────────────────────
+        window.addEventListener('load', () => {
+            kuralInput.focus();
+        });
+    </script>
+</body>
+</html>
