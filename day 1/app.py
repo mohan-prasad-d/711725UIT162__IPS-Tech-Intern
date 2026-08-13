@@ -30,7 +30,6 @@ def get_kural(number):
 
         data = response.json()
 
-        # ── Kural verse (API returns a list: ["line1", "line2"]) ─────────────
         raw_kural = data.get("kural", "")
         line1, line2 = "", ""
 
@@ -48,8 +47,6 @@ def get_kural(number):
             else:
                 line1 = raw_kural
 
-        # ── Meaning ──────────────────────────────────────────────────────────
-        # API returns: {"ta_mu_va": "...", "ta_salamon": "...", "ta_kalaignar": "...", "en": "..."}
         raw_meaning = data.get("meaning", "")
 
         tamil_meaning = ""
