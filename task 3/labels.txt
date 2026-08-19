@@ -1,0 +1,3 @@
+0 stone
+1 paper
+2 sccsiors

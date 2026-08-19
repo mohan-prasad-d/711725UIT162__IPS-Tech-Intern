@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Player Stone Paper Scissor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="app-shell">
+        <section class="score-strip" aria-label="Score board">
+            <div class="score-box">
+                <span>Player 1</span>
+                <strong id="playerOneScore">0</strong>
+            </div>
+            <div class="round-box">
+                <span>Round</span>
+                <strong id="roundCount">1</strong>
+            </div>
+            <div class="score-box">
+                <span>Player 2</span>
+                <strong id="playerTwoScore">0</strong>
+            </div>
+        </section>
+
+        <section class="camera-stage">
+            <div class="camera-wrap">
+                <video id="cameraFeed" autoplay playsinline muted></video>
+                <canvas id="captureCanvas" hidden></canvas>
+                <div class="split-line"></div>
+                <div class="side-tag left">Player 1</div>
+                <div class="side-tag right">Player 2</div>
+            </div>
+
+            <div class="result-panel" aria-live="polite">
+                <p class="eyebrow">Camera Mode</p>
+                <h1 id="resultTitle">Ready?</h1>
+                <p id="resultText">Start camera. Player 1 use left side, Player 2 use right side.</p>
+                <div class="control-row">
+                    <button class="action-btn primary" id="startBtn" type="button">Start Camera</button>
+                    <button class="action-btn" id="lockBtn" type="button" disabled>Add Point Now</button>
+                    <button class="action-btn" id="resetBtn" type="button">Reset</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="battle-stage" aria-label="Current moves">
+            <div class="player-panel">
+                <p class="panel-label">Player 1 Move</p>
+                <div class="choice-orb" id="playerOneOrb">?</div>
+                <p class="move-name" id="playerOneMove">Waiting</p>
+                <small id="playerOneConfidence">0% confidence</small>
+            </div>
+
+            <div class="player-panel">
+                <p class="panel-label">Player 2 Move</p>
+                <div class="choice-orb" id="playerTwoOrb">?</div>
+                <p class="move-name" id="playerTwoMove">Waiting</p>
+                <small id="playerTwoConfidence">0% confidence</small>
+            </div>
+        </section>
+
+        <section class="history-section">
+            <div class="history-head">
+                <h2>Match History</h2>
+                <span id="statusText">Camera off</span>
+            </div>
+            <div class="debug-panel">
+                <strong id="modelStatus">Checking model...</strong>
+                <span id="playerOneDebug">P1: no prediction</span>
+                <span id="playerTwoDebug">P2: no prediction</span>
+            </div>
+            <ul class="history-list" id="historyList">
+                <li class="empty-history">Locked rounds will appear here.</li>
+            </ul>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
